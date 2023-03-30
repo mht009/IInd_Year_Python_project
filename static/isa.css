@@ -1,3 +1,8 @@
+*{
+    transition: ease-in-out 5ms;
+    
+}
+
 body {
     margin: 0;
     padding: 0;

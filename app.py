@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     # return 'Hello, Mohit!'
     navList = ['Home', 'About', 'Services', 'Portfolio', 'Contact']
-    tabIds = ['#', '#about-us-id1', '#', '#', '#']
+    tabIds = ['#', '#about-us-id1', '#', '#', '#footer']
 
     depts = ['Computer Science and Engineering', 'Information Technology', 'Electronics and TeleCommunication', 'Electrical Engineering',
              'Mechanical Engineering', 'Civil Engineering', 'Chemical Engineering', 'Textile Engineering', 'Instrumentation Engineering', 'Production Engineering']
