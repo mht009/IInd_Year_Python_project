@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mosha</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/isa.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <video autoplay loop muted plays-inline class="background-clip">
         <source src="/static/video2.mp4" type="video/mp4">
     </video>
     <section id="title">
-      <div class="header">
-        <img src="/static/SGGS Logo.png" alt="" />
-        <nav class="navbar">
-        {% block main %}
-          <ul>
-            {% for tab in navList %}
-            <li><a href="#">{{ tab }}</a></li>
-            {% endfor %}
-        
-            <!-- <li><a href="#">Home</a></li>
+        <div class="header">
+            <img src="/static/SGGS Logo White.png" alt="" />
+            <nav class="navbar">
+                {% block main %}
+                <ul>
+                    {% for tab, tab_id in zip(navList, tabIds) %}
+                    <li><a href="{{ tab_id }}">{{ tab }}</a></li>
+                    {% endfor %}
+
+                    <!-- <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Contact</a></li> -->
-          </ul>
-        {% endblock %}
-        </nav>
-        <!-- <i class="fas fa-search fa-fw"></i> -->
-        <form class="search">
-          <input type="text" placeholder="Search..." />
-          <button type="submit">Search</button>
-        </form>
-      </div>
+                </ul>
+                {% endblock %}
+            </nav>
+            <!-- <i class="fas fa-search fa-fw"></i> -->
+            <form class="search">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </section>
 
     <!-- second section i.e cards   -->
     <section class="cards">
-      <div class="card">
-        <h3>1st Year</h3>
-        <ul>
-          <!-- <li><a href="#">All Branches</a></li> -->
-        <li><a href="#">Group A</a></li>
-        <span class="sub-1st">(EG, Physics, EM, M-1, BEE)</span>
-        <br><br>
-        <li><a href="#">Group B</a></li>
-        <span class="sub-1st">(EE, PPS, PC, M-2, Workshop,Chemistry)</span>
-        </ul>
-      </div>
+        <div class="card">
+            <h3>1st Year</h3>
+            <ul>
+                <!-- <li><a href="#">All Branches</a></li> -->
+                <li><a href="{{ fyLinks[0] }}">Group A</a></li>
+                <span class="sub-1st">(EG, Physics, EM, M-1, BEE)</span>
+                <br><br>
+                <li><a href="{{ fyLinks[1] }}">Group B</a></li>
+                <span class="sub-1st">(EE, PPS, PC, M-2, Workshop,Chemistry)</span>
+            </ul>
+        </div>
 
-      <div class="card">
-        <h3>2nd Year</h3>
-        {% block secondY %}
-        <ul>
-            {% for dept, syLink in zip(depts, syLinks) %}
-          <li><a href="{{ syLink }}"> {{ dept }}</a></li>
-            {% endfor %}
-          <!-- <li><a href="#"> Computer Science and Engineering</a></li>
+        <div class="card">
+            <h3>2nd Year</h3>
+            {% block secondY %}
+            <ul>
+                {% for dept, syLink in zip(depts, syLinks) %}
+                <li><a href="{{ syLink }}"> {{ dept }}</a></li>
+                {% endfor %}
+                <!-- <li><a href="#"> Computer Science and Engineering</a></li>
           <li><a href="#"> Information Technology</a></li>
           <li><a href="#">Electronics and Telecommunication</a></li>
           <li><a href="#">Electrical Engineering</a></li>
@@ -73,37 +75,38 @@
           <li><a href="#">Textile Engineering</a></li>
           <li><a href="#">Production Engineering</a></li>
           <li><a href="#">Intrumentation Engineering</a></li> -->
-        </ul>
-        {% endblock %}
+            </ul>
+            {% endblock %}
 
-      </div>
+        </div>
 
-      <div class="card">
-        <h3>3rd Year</h3>
-        {% block thirdY %}
-        <ul>
-            {% for dept, tyLink in zip(depts, tyLinks) %}
-            <li><a href="{{ tyLink }}"> {{ dept }}</a></li>
-            {% endfor %}
-        
-        </ul>
-        {% endblock %}
-      </div>
+        <div class="card">
+            <h3>3rd Year</h3>
+            {% block thirdY %}
+            <ul>
+                {% for dept, tyLink in zip(depts, tyLinks) %}
+                <li><a href="{{ tyLink }}"> {{ dept }}</a></li>
+                {% endfor %}
 
-      <div class="card" >
-        <h3>4th Year</h3>
-        {% block fourY %}
-        <ul>
-            {% for dept, btechLink in zip(depts, btechLinks) %}
-            <li><a href="{{ btechLink }}"> {{ dept }}</a></li>
-            {% endfor %}
-        
-        </ul>
-        {% endblock %}
-      </div>
+            </ul>
+            {% endblock %}
+        </div>
+
+        <div class="card">
+            <h3>B-Tech</h3>
+            {% block fourY %}
+            <ul>
+                {% for dept, btechLink in zip(depts, btechLinks) %}
+                <li><a href="{{ btechLink }}"> {{ dept }}</a></li>
+                {% endfor %}
+
+            </ul>
+            {% endblock %}
+        </div>
     </section>
 
-    <section class="about">
+    <section class="about" id = "about-us-id1">
+
         <div class="about-us">
             <h2>About us</h2>
             <p>{{ abt_text }}</p>
@@ -112,13 +115,14 @@
 
 
     <footer id="footer">
-      <i class="social-icon fa fa-twitter"></i>
-      <i class="social-icon fa fa-facebook-f"></i>
-      <i class="social-icon fa fa-instagram"></i>
-      <i class="social-icon fa fa-whatsapp"></i>
-      <p class="copyright">© Copyright Reserved</p>
+        <i class="foot-a social-icon fa fa-twitter"></i>
+        <i class="foot-b social-icon fa fa-facebook-f"></i>
+        <i class="foot-c social-icon fa fa-instagram"></i>
+        <i class="foot-d social-icon fa fa-whatsapp"></i>
+        <p class="foot-2 copyright">© Copyright Reserved</p>
     </footer>
 
     <script src="isa"></script>
-  </body>
+</body>
+
 </html>

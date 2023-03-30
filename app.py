@@ -8,6 +8,7 @@ app = Flask(__name__)
 def index():
     # return 'Hello, Mohit!'
     navList = ['Home', 'About', 'Services', 'Portfolio', 'Contact']
+    tabIds = ['#', '#about-us-id1', '#', '#', '#']
 
     depts = ['Computer Science and Engineering', 'Information Technology', 'Electronics and TeleCommunication', 'Electrical Engineering',
              'Mechanical Engineering', 'Civil Engineering', 'Chemical Engineering', 'Textile Engineering', 'Instrumentation Engineering', 'Production Engineering']
@@ -51,9 +52,14 @@ def index():
         'https://drive.google.com/drive/folders/1VDEs3BiW3CSpJIdrcJyJ5EX51XchQtQ6?usp=sharing',
     ]
 
+    fyLinks = [
+        'https://drive.google.com/drive/folders/1GGX7IncCkVCNaP6kJWyOG-xHlmwvriaT?usp=sharing',
+        'https://drive.google.com/drive/folders/1WUSD86scF4AChB_upnjecZ-xg6BFhc6u?usp=sharing'
+    ]
+
     abt_text = 'Welcome to this institute-specific website, a platform designed to assist students, particularly freshers, in accessing relevant study resources. This website offers an array of resources such as books, PDFs,hand-written notes from seniors, and previous year question papers, all of which can help students in their academic journey.The transition from school to college can be overwhelming, and it is essential to have access to the right resources to facilitate a smooth transition. At this website, we understand the challenges that students face in their academic journey, and our goal is to make the learning process as seamless as possible. Key resource available on this website is hand-written notes from seniors. These notes provide a unique perspective on the subjects and can help students understand complex topics in a simplified manner. This website also offers previous year question papers (PYQs). These papers are essential for students who want to prepare for their exams. By practicing PYQs, students can get a sense of the type of questions that might appear on their exams, making them better prepared to tackle them.'
 
-    return render_template('index.html', navList=navList, depts=depts, tyLinks=tyLinks, syLinks=syLinks, btechLinks=btechLinks, zip=zip, abt_text=abt_text)
+    return render_template('index.html', navList=navList, depts=depts, tyLinks=tyLinks, syLinks=syLinks, btechLinks=btechLinks, zip=zip, abt_text=abt_text, tabIds=tabIds, fyLinks=fyLinks)
 
 
 if __name__ == '__main__':
